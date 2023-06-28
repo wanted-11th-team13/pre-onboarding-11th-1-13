@@ -1,12 +1,12 @@
 import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react';
-import { resolvePath } from 'react-router-dom';
+import { resolve } from 'node:path';
 
 export default defineConfig({
   plugins: [react()],
   resolve: {
     extensions: ['.js', '.jsx'],
-    alias: [{ find: '@', replacement: resolvePath(__dirname, './src') }],
+    alias: [{ find: '@', replacement: resolve(__dirname, './src') }],
   },
   server: {
     host: 'localhost',
