@@ -1,14 +1,19 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
-import { postNewAccount } from '../utils/UserFunctions';
+import { postNewAccount } from '../api/auth';
 import { useNavigate } from 'react-router-dom';
-import { validEmail, validPassword } from '../utils/Functions';
+import { validEmail, validPassword } from '../api/api';
+import AuthButton from '../Components/AuthButton';
+import AuthInput from '../Components/AuthInput';
+import PageButton from '../Components/PageButton';
+import Container from '../Components/AuthContainer';
 
-const Wrapper = styled.div`
+const Wrapper = styled.main`
   width: 100vw;
   position: relative;
   display: flex;
-  justify-content: center;
+  align-items: center;
+  flex-direction: column;
 `;
 
 const Header = styled.header`
@@ -23,28 +28,15 @@ const Header = styled.header`
   box-shadow: rgb(38, 57, 77) 0px 20px 30px -10px;
 `;
 
-const Container = styled.div`
-  width: 500px;
-  height: 500px;
-  margin-top: 100px;
-  box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px,
-    rgba(0, 0, 0, 0.22) 0px 15px 12px;
+const Logo = styled.h4`
+  font-size: 100px;
+`;
+
+const Row = styled.section`
   display: flex;
-  flex-direction: column;
-  align-items: center;
   justify-content: center;
-`;
-
-const Input = styled.input`
-  width: 300px;
-  height: 30px;
-  margin: 10px 0;
-  padding: 0 20px;
-`;
-
-const Button = styled.button`
-  width: 200px;
-  height: 50px;
+  align-items: center;
+  flex-direction: column;
 `;
 
 export default function SignUpPage() {
@@ -64,28 +56,45 @@ export default function SignUpPage() {
     }
   };
 
+  useEffect(() => {
+    const accessToken = JSON.parse(localStorage.getItem('accessToken'));
+
+    if (accessToken) {
+      navigate('/todo');
+    }
+  }, []);
+
   return (
     <Wrapper>
       <Header>회원가입 🤗</Header>
       <Container>
-        <Input
-          value={email}
-          onChange={event => setEmail(event.target.value)}
-          placeholder="Email"
-        />
-        <Input
-          value={password}
-          onChange={event => setPassword(event.target.value)}
-          placeholder="Password"
-          type="password"
-        />
-        <Button
-          disabled={!(validEmail(email) && validPassword(password))}
-          onClick={handleStartJoin}
-        >
-          회원가입
-        </Button>
+        <Row>
+          <Logo>🤗</Logo>
+        </Row>
+        <Row>
+          <AuthInput
+            value={email}
+            onChange={event => setEmail(event.target.value)}
+            placeholder="Email"
+            type="email"
+          />
+          <AuthInput
+            value={password}
+            onChange={event => setPassword(event.target.value)}
+            placeholder="Password"
+            type="password"
+          />
+        </Row>
+        <Row>
+          <AuthButton
+            disabled={!(validEmail(email) && validPassword(password))}
+            onClick={handleStartJoin}
+          >
+            회원가입
+          </AuthButton>
+        </Row>
       </Container>
+      <PageButton onClick={() => navigate('/signin')}>로그인하기</PageButton>
     </Wrapper>
   );
 }

@@ -1,4 +1,4 @@
-import { axiosInstance } from '../api/api';
+import { axiosInstance } from './api';
 
 export const postNewAccount = async (email, password) => {
   try {
