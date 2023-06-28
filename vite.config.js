@@ -1,6 +1,6 @@
-import { defineConfig } from 'vite'
-import react from '@vitejs/plugin-react'
-import { resolvePath } from 'react-router-dom'
+import { defineConfig } from 'vite';
+import react from '@vitejs/plugin-react';
+import { resolvePath } from 'react-router-dom';
 
 export default defineConfig({
   plugins: [react()],
@@ -12,5 +12,5 @@ export default defineConfig({
     host: 'localhost',
     port: 3000,
     open: true,
-  }
-})
+  },
+});

@@ -1,5 +1,5 @@
 module.exports = {
-  arrowParens: "avoid",
+  arrowParens: 'avoid',
 
   bracketSameLine: false,
   // 객체 표기 괄호 사이 공백 추가 여부 (ex: { foo: bar })
@@ -7,9 +7,9 @@ module.exports = {
   // 행폭 설정 (줄 길이가 설정 값보다 길어지면 자동 개행)
   printWidth: 80,
   // 산문 래핑 설정
-  proseWrap: "preserve",
+  proseWrap: 'preserve',
   // 객체 속성 key 값에 인용 부호 사용 여부 (ex: { 'key': 'xkieo-xxxx' })
-  quoteProps: "as-needed",
+  quoteProps: 'as-needed',
   // 세미콜론(;) 사용 여부
   semi: true,
   // 싱글 인용 부호(') 사용 여부
@@ -17,7 +17,7 @@ module.exports = {
   // 탭 너비 설정
   tabWidth: 2,
   // 객체 마지막 속성 선언 뒷 부분에 콤마 추가 여부
-  trailingComma: "es5",
+  trailingComma: 'es5',
   // 탭 사용 여부
   useTabs: false,
-}
+};

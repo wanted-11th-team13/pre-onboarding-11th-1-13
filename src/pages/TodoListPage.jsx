@@ -1,7 +1,5 @@
-import React from 'react'
+import React from 'react';
 
 export default function TodoListPage() {
-  return (
-    <div>TodoListPage</div>
-  )
+  return <div>TodoListPage</div>;
 }
