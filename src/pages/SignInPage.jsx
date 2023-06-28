@@ -1,6 +1,10 @@
 import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { signInApi } from '@/api/authApi';
 
 export default function SignInPage() {
+  const navigate = useNavigate();
+
   const [userInfo, setUserInfo] = useState({
     email: '',
     password: '',
@@ -16,9 +20,26 @@ export default function SignInPage() {
     }));
   };
 
+  const handleSignIn = async e => {
+    e.preventDefault();
+    try {
+      const response = await signInApi(userInfo);
+      if (response.status !== 200) {
+        alert('로그인에 실패하였습니다.');
+        return;
+      }
+
+      alert('로그인을 성공하였습니다.');
+
+      navigate('/todo');
+    } catch (error) {
+      alert(`오류가 발생했습니다.\n다시 시도해주세요.`);
+    }
+  };
+
   return (
     <div className="flex justify-center items-center h-screen text-center">
-      <form>
+      <form onSubmit={handleSignIn}>
         <h1 className="text-lg font-bold mb-5">로그인</h1>
         <div className="flex justify-between items-center">
           <label htmlFor="email">이메일 </label>

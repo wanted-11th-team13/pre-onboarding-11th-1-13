@@ -1,6 +1,10 @@
 import { useState } from 'react';
+import { signUpApi } from '@/api/authApi';
+import { useNavigate } from 'react-router-dom';
 
 export default function SignUpPage() {
+  const navigate = useNavigate();
+
   const [userInfo, setUserInfo] = useState({
     email: '',
     password: '',
@@ -16,9 +20,26 @@ export default function SignUpPage() {
     }));
   };
 
+  const handleSignUp = async e => {
+    e.preventDefault();
+    try {
+      const response = await signUpApi(userInfo);
+      if (response.status !== 201) {
+        alert('회원가입에 실패하였습니다.');
+        return;
+      }
+
+      alert('회원가입을 성공하였습니다.');
+
+      navigate('/signin');
+    } catch (error) {
+      alert(`오류가 발생했습니다.\n다시 시도해주세요.`);
+    }
+  };
+
   return (
     <div className="flex justify-center items-center h-screen text-center">
-      <form>
+      <form onSubmit={handleSignUp}>
         <h1 className="text-lg font-bold mb-5">회원가입</h1>
         <div className="flex justify-between items-center">
           <label htmlFor="email">이메일 </label>
