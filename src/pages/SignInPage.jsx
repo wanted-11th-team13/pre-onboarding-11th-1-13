@@ -29,8 +29,9 @@ export default function SignInPage() {
         return;
       }
 
+      const access_token = response.data.access_token;
+      localStorage.setItem('access_token', access_token);
       alert('로그인을 성공하였습니다.');
-
       navigate('/todo');
     } catch (error) {
       alert(`오류가 발생했습니다.\n다시 시도해주세요.`);

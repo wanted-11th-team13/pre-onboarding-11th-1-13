@@ -31,4 +31,18 @@ const getAxiosInstance = () => {
   return instance;
 };
 
-export const axiosInstance = getAxiosInstance();
+const axiosInstance = getAxiosInstance();
+
+// api 함수 간소화
+export const apiRequest = async (url, method, data) => {
+  try {
+    const response = await axiosInstance.request({
+      url,
+      method,
+      data,
+    });
+    return response;
+  } catch (error) {
+    alert(error.response.data.message);
+  }
+};

@@ -1,22 +1,9 @@
-import { axiosInstance } from './api';
-
-const authRequest = async (url, method, data) => {
-  try {
-    const response = await axiosInstance.request({
-      url,
-      method,
-      data,
-    });
-    return response;
-  } catch (error) {
-    alert(error.response.data.message);
-  }
-};
+import { apiRequest } from './api';
 
 export const signUpApi = async userInfo => {
-  return await authRequest('/auth/signup', 'post', userInfo);
+  return await apiRequest('/auth/signup', 'post', userInfo);
 };
 
 export const signInApi = async userInfo => {
-  return await authRequest('/auth/signin', 'post', userInfo);
+  return await apiRequest('/auth/signin', 'post', userInfo);
 };
