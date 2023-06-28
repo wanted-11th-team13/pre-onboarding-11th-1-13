@@ -1,17 +1,16 @@
-import { useState, useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-
 import { axiosInstance } from '../api/api';
 import * as S from './AuthForm.styles';
 
-export default function SignIn() {
-  const navigate = useNavigate();
-
+export default function Singup() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
   const [isEmail, setIsEmail] = useState(false);
   const [isPassword, setIsPassword] = useState(false);
+
+  const navigate = useNavigate();
 
   const checkedEmail = e => {
     const curEmail = e.target.value;
@@ -39,15 +38,11 @@ export default function SignIn() {
     e.preventDefault();
 
     try {
-      const response = await axiosInstance.post('/auth/signin', {
-        email,
-        password,
-      });
-
-      localStorage.setItem('access_token', response.data.access_token);
-      navigate('/todo');
+      await axiosInstance.post('/auth/signup', { email, password });
+      navigate('/signin');
     } catch (error) {
       console.log(error);
+      alert('다시입력해주세요');
     }
   };
 
@@ -60,7 +55,7 @@ export default function SignIn() {
 
   return (
     <S.Container>
-      <h1>WELCOME</h1>
+      <h1>Create Account</h1>
       <S.SignFrom onSubmit={submitHandler}>
         <S.IdLine>
           <input
@@ -81,11 +76,11 @@ export default function SignIn() {
           />
         </S.PwLine>
         <button
-          data-testid="signin-button"
+          data-testid="signup-button"
           type="submit"
           disabled={isEmail && isPassword ? false : true}
         >
-          LOGIN
+          SIGNUP
         </button>
       </S.SignFrom>
     </S.Container>
