@@ -1,5 +1,10 @@
-import React from 'react';
+import AccountForm from '../components/AccountForm';
 
 export default function SignUpPage() {
-  return <div>SignUpPage</div>;
+  return (
+    <section>
+      <h2>회원가입</h2>
+      <AccountForm />
+    </section>
+  );
 }
