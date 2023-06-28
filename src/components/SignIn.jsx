@@ -1,10 +1,8 @@
 import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { axiosInstance } from '@/api/api';
 
-import { axiosInstance } from '../api/api';
-import * as S from './AuthForm.styles';
-
-export default function SignIn() {
+export function SignIn() {
   const navigate = useNavigate();
 
   const [email, setEmail] = useState('');
@@ -59,10 +57,10 @@ export default function SignIn() {
   }, []);
 
   return (
-    <S.Container>
+    <div>
       <h1>WELCOME</h1>
-      <S.SignFrom onSubmit={submitHandler}>
-        <S.IdLine>
+      <form onSubmit={submitHandler}>
+        <div>
           <input
             data-testid="email-input"
             type="text"
@@ -70,8 +68,8 @@ export default function SignIn() {
             name="email"
             onChange={checkedEmail}
           />
-        </S.IdLine>
-        <S.PwLine>
+        </div>
+        <div>
           <input
             data-testid="password-input"
             type="password"
@@ -79,7 +77,7 @@ export default function SignIn() {
             name="password"
             onChange={checkedPassword}
           />
-        </S.PwLine>
+        </div>
         <button
           data-testid="signin-button"
           type="submit"
@@ -87,7 +85,7 @@ export default function SignIn() {
         >
           LOGIN
         </button>
-      </S.SignFrom>
-    </S.Container>
+      </form>
+    </div>
   );
 }

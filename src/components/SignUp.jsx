@@ -1,7 +1,6 @@
 import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { axiosInstance } from '../api/api';
-import * as S from './AuthForm.styles';
+import { axiosInstance } from '@/api/api';
 
 export default function Singup() {
   const [email, setEmail] = useState('');
@@ -54,10 +53,10 @@ export default function Singup() {
   }, []);
 
   return (
-    <S.Container>
+    <div>
       <h1>Create Account</h1>
-      <S.SignFrom onSubmit={submitHandler}>
-        <S.IdLine>
+      <form onSubmit={submitHandler}>
+        <div>
           <input
             data-testid="email-input"
             type="text"
@@ -65,8 +64,8 @@ export default function Singup() {
             name="email"
             onChange={checkedEmail}
           />
-        </S.IdLine>
-        <S.PwLine>
+        </div>
+        <div>
           <input
             data-testid="password-input"
             type="password"
@@ -74,7 +73,7 @@ export default function Singup() {
             name="password"
             onChange={checkedPassword}
           />
-        </S.PwLine>
+        </div>
         <button
           data-testid="signup-button"
           type="submit"
@@ -82,7 +81,7 @@ export default function Singup() {
         >
           SIGNUP
         </button>
-      </S.SignFrom>
-    </S.Container>
+      </form>
+    </div>
   );
 }
