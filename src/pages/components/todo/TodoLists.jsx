@@ -2,7 +2,9 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import TodoItem from './TodoItem';
 
-export default function TodoLists({ todos, setTodos }) {
+// ** React.memo **
+// TodoLists 컴포넌트의 props가 변경되지 않으면 이전에 랜더링된 결과를 재사용
+const TodoLists = ({ todos, setTodos }) => {
   return (
     <div>
       <ul>
@@ -30,7 +32,9 @@ export default function TodoLists({ todos, setTodos }) {
       </ul>
     </div>
   );
-}
+};
+
+export default React.memo(TodoLists);
 
 TodoLists.propTypes = {
   todos: PropTypes.arrayOf(
