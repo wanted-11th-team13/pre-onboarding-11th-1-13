@@ -6,13 +6,16 @@ export default function TodoListPage() {
   const { logout } = useAuth();
 
   const handleLogout = () => {
+    // useAuth 커스텀 훅을 사용하여 로그인 기능 추가
     logout();
     navigate('/');
   };
   return (
     <div>
-      TodoListPage
-      <button onClick={handleLogout}></button>
+      <h1>TodoListPage</h1>
+      <div>
+        <button onClick={handleLogout}>로그아웃</button>
+      </div>
     </div>
   );
 }

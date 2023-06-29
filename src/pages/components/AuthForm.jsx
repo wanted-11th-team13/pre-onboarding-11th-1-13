@@ -30,7 +30,7 @@ export default function AuthForm({ title, onSubmit }) {
 
       if (onSubmit === signInApi) {
         const access_token = response.data.access_token;
-        // 로그인
+        // useAuth 커스텀 훅을 사용하여 로그인 기능 추가
         login(access_token);
         navigate('/todo');
       }
