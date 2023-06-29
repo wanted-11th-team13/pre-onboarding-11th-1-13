@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { deleteTodoApi, updateTodoApi } from '@/api/todoApi';
 import PropTypes from 'prop-types';
+import Button from '../Button';
 
 export default function TodoItem({ id, todo, isCompleted, setTodos }) {
   // 수정 모드
@@ -103,12 +104,13 @@ export default function TodoItem({ id, todo, isCompleted, setTodos }) {
             />
           </div>
           <div className="w-1/5">
-            <button data-testid="submit-button" type="submit">
-              제출
-            </button>
-            <button data-testid="cancel-button" onClick={handleCancel}>
-              취소
-            </button>
+            <Button type="submit" label="submit" title="제출" />
+            <Button
+              onClick={handleCancel}
+              type="button"
+              label="cancel"
+              title="취소"
+            />
           </div>
         </form>
       ) : (
@@ -124,12 +126,18 @@ export default function TodoItem({ id, todo, isCompleted, setTodos }) {
             </label>
           </div>
           <div>
-            <button onClick={handleEdit} data-testid="modify-button">
-              수정
-            </button>
-            <button onClick={handleDelete} data-testid="delete-button">
-              삭제
-            </button>
+            <Button
+              onClick={handleEdit}
+              type="button"
+              label="modify"
+              title="수정"
+            />
+            <Button
+              onClick={handleDelete}
+              type="button"
+              label="delete"
+              title="삭제"
+            />
           </div>
         </div>
       )}

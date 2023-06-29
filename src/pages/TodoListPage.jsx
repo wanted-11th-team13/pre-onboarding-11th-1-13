@@ -4,6 +4,7 @@ import useAuth from '@/hooks/useAuth';
 import { getTodosApi } from '@/api/todoApi';
 import CreateTodo from './components/todo/CreateTodo';
 import TodoLists from './components/todo/TodoLists';
+import Button from './components/Button';
 
 export default function TodoListPage() {
   const navigate = useNavigate();
@@ -41,7 +42,7 @@ export default function TodoListPage() {
         <TodoLists todos={todos} setTodos={setTodos} />
       </div>
       <div>
-        <button onClick={handleLogout}>로그아웃</button>
+        <Button title="로그아웃" onClick={handleLogout} type="button" />
       </div>
     </div>
   );

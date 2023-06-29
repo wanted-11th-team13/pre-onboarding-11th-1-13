@@ -1,6 +1,7 @@
 import { useRef } from 'react';
 import PropTypes from 'prop-types';
 import { createTodoApi } from '@/api/todoApi';
+import Button from '../Button';
 
 export default function CreateTodo({ setTodos }) {
   // input onChange의 value 값을 구할 때,
@@ -37,9 +38,7 @@ export default function CreateTodo({ setTodos }) {
   return (
     <form onSubmit={handleSubmit}>
       <input data-testid="new-todo-input" type="text" ref={inputRef} />
-      <button data-testid="new-todo-add-button" type="submit">
-        추가
-      </button>
+      <Button title="추가" label="new-todo-add" type="submit" />
     </form>
   );
 }

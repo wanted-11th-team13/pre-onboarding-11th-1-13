@@ -1,9 +1,9 @@
 import { useNavigate } from 'react-router-dom';
 import useHandleUserInfo from '@/hooks/useHandleUserInfo';
 import { signUpApi, signInApi } from '@/api/authApi';
-import AuthButton from './AuthButton';
 import PropTypes from 'prop-types';
 import useAuth from '@/hooks/useAuth';
+import Button from '../Button';
 
 export default function AuthForm({ title, onSubmit }) {
   const navigate = useNavigate();
@@ -70,13 +70,13 @@ export default function AuthForm({ title, onSubmit }) {
             placeholder="비밀번호를 입력해주세요."
           />
         </div>
-        <AuthButton disabled={!isValid} buttonText={title} />
+        <Button disabled={!isValid} title={title} type="submit" label={title} />
       </form>
     </div>
   );
 }
 
 AuthForm.propTypes = {
-  title: PropTypes.string,
-  onSubmit: PropTypes.func,
+  title: PropTypes.string.isRequired,
+  onSubmit: PropTypes.func.isRequired,
 };
