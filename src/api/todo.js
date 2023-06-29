@@ -1,36 +1,20 @@
-import { axiosInstance } from './api';
+import { apiRequest } from './api';
+
+export const signInApi = async userInfo => {
+  return await apiRequest('/auth/signin', 'post', userInfo);
+};
 
 export const addTodo = async todo => {
-  try {
-    const response = await axiosInstance.post('/todos', { todo });
-    return response;
-  } catch (error) {
-    return error.response;
-  }
+  return await apiRequest('/todos', 'post', { todo });
 };
 
 export const updateTodo = async ({ todo, id }) => {
-  try {
-    const response = await axiosInstance.put(`/todos/${id}`, { ...todo });
-    return response;
-  } catch (error) {
-    return error.response;
-  }
+  return await apiRequest(`/todos/${id}`, 'put', { ...todo });
 };
 export const deleteTodo = async id => {
-  try {
-    const response = await axiosInstance.delete(`/todos/${id}`);
-    return response;
-  } catch (error) {
-    return error.response;
-  }
+  return await apiRequest(`/todos/${id}`, 'delete');
 };
 
 export const getTodos = async () => {
-  try {
-    const response = await axiosInstance.get('/todos');
-    return response;
-  } catch (error) {
-    return error.response;
-  }
+  return await apiRequest('/todos', 'get');
 };
