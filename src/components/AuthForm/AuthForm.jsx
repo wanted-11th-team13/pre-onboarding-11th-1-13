@@ -1,18 +1,16 @@
 import { FormInput, RegisterButton } from '@/components';
-import { useInput } from '@/hooks';
 import PropTypes from 'prop-types';
-// import { useEffect } from 'react';
+import { validateEmail, validatePassword } from '@/utils';
 
 export function AuthForm({
-  isValid,
-  setValid,
   handleSubmit,
-  isValidPassword,
-  isValidEmail,
+  emailValue,
+  passwordValue,
+  onEmailChange,
+  onPasswordChange,
 }) {
-  const emailInput = useInput('');
-  const passwordInput = useInput('');
-
+  console.log(emailValue);
+  console.log(passwordValue);
   return (
     <form onSubmit={handleSubmit}>
       <label htmlFor="email">Email : </label>
@@ -20,21 +18,23 @@ export function AuthForm({
         data-testid="email-input"
         name="email"
         type="email"
-        value={emailInput.value}
-        {...emailInput} // onChange역할
+        value={emailValue}
+        onChange={onEmailChange}
       />
       <label htmlFor="password">Password : </label>
       <FormInput
         data-testid="password-input"
         name="password"
         type="password"
-        value={passwordInput.value}
-        {...passwordInput} // onChange역할
+        value={passwordValue}
+        onChange={onPasswordChange}
       />
       <RegisterButton
         data-testid="signin-button"
         type="submit"
-        // disabled={!isValid}
+        disabled={
+          !validateEmail(emailValue) || !validatePassword(passwordValue)
+        }
       >
         제출
       </RegisterButton>
@@ -42,11 +42,10 @@ export function AuthForm({
   );
 }
 
-// PropTypes
 AuthForm.propTypes = {
-  isValid: PropTypes.bool,
-  setValid: PropTypes.func,
   handleSubmit: PropTypes.func,
-  isValidEmail: PropTypes.bool,
-  isValidPassword: PropTypes.bool,
+  emailValue: PropTypes.string,
+  passwordValue: PropTypes.string,
+  onEmailChange: PropTypes.func,
+  onPasswordChange: PropTypes.func,
 };
