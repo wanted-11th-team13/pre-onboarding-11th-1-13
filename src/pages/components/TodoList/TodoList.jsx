@@ -1,10 +1,11 @@
-import { TodoItem } from '@/components';
+// import { TodoItem, TodoCreate } from '@/components';
+import { TodoItem } from '../TodoItem/TodoItem';
+import { TodoCreate } from '../TodoCreate/TodoCreate';
 import { useEffect, useState } from 'react';
 import axios from 'axios';
-import { PROD_ADDRESS } from '@/api/api';
 
 const token = localStorage.getItem('token');
-const url = PROD_ADDRESS;
+const url = 'http://localhost:8000';
 const api = axios.create({
   baseURL: url,
   headers: {
@@ -32,17 +33,17 @@ export function TodoList() {
     }
   };
 
-  // const createTodo = async todoData => {
-  //   try {
-  //     const response = await api.post('/todos', todoData);
-  //     const createdTodo = response.data;
+  const createTodo = async todoData => {
+    try {
+      const response = await api.post('/todos', todoData);
+      const createdTodo = response.data;
 
-  //     console.log(createdTodo);
-  //     getTodos();
-  //   } catch (error) {
-  //     console.log(console.error());
-  //   }
-  // };
+      console.log(createdTodo);
+      getTodos();
+    } catch (error) {
+      console.log(console.error());
+    }
+  };
 
   const getTodos = async () => {
     try {
@@ -110,6 +111,7 @@ export function TodoList() {
           setPickedIndex={setPickedIndex}
         />
       ))}
+      <TodoCreate createTodo={createTodo} />
     </ul>
   );
 }

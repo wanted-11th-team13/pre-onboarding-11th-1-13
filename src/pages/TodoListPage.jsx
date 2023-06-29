@@ -1,5 +1,6 @@
 import { useNavigate } from 'react-router-dom';
 import useAuth from '../hooks/useAuth';
+import { TodoList } from './components/TodoList/TodoList';
 
 export default function TodoListPage() {
   const navigate = useNavigate();
@@ -13,6 +14,7 @@ export default function TodoListPage() {
   return (
     <div>
       <h1>TodoListPage</h1>
+      <TodoList />
       <div>
         <button onClick={handleLogout}>로그아웃</button>
       </div>
