@@ -45,17 +45,16 @@ function AccountForm() {
     e.preventDefault();
     const result =
       pathname === '/signup' ? await signup(account) : await signin(account);
-    const { data, status } = result;
+    const { status, data } = result;
     if (status !== 201 && status !== 200) {
-      toast(data.message);
+      toast(data?.message);
     }
     if (status === 201) {
       toast('회원가입이 완료되었습니다.');
       navigate('/signin');
     }
     if (status === 200) {
-      const { access_token } = data;
-      localStorage.setItem('access_token', access_token);
+      localStorage.setItem('access_token', data?.access_token);
       toast('로그인되었습니다.');
       navigate('/todo');
     }
