@@ -3,7 +3,7 @@ import useHandleUserInfo from '@/hooks/useHandleUserInfo';
 import { signUpApi, signInApi } from '@/api/authApi';
 import AuthButton from './AuthButton';
 import PropTypes from 'prop-types';
-import useAuth from '../../hooks/useAuth';
+import useAuth from '@/hooks/useAuth';
 
 export default function AuthForm({ title, onSubmit }) {
   const navigate = useNavigate();
