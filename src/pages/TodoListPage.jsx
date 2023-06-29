@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import useAuth from '@/hooks/useAuth';
 import { getTodosApi } from '@/api/todoApi';
+import CreateTodo from './components/todo/CreateTodo';
 import TodoLists from './components/todo/TodoLists';
 
 export default function TodoListPage() {
@@ -36,6 +37,7 @@ export default function TodoListPage() {
     <div>
       <div>
         <h1>TodoListPage</h1>
+        <CreateTodo setTodos={setTodos} />
         <TodoLists todos={todos} setTodos={setTodos} />
       </div>
       <div>
