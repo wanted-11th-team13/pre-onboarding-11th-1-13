@@ -1,10 +1,10 @@
 /* eslint-disable react/prop-types */
+import { styled } from 'styled-components';
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import SubmitButton from '../common/SubmitButton';
+import { signInApi, signUpApi } from '../../api/auth';
+import Button from '../common/Button';
 import InputContainer from '../common/InputContainer';
-import { postSignIn, postSignUp } from '../../api/api';
-import { styled } from 'styled-components';
 
 const ButtonsContainer = styled.div`
   display: flex;
@@ -15,27 +15,30 @@ const Form = styled.form`
 `;
 
 export default function AuthForm({ title }) {
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-  const [emailState, setEmailState] = useState(false);
-  const [passwordState, setPasswordState] = useState(false);
+  const [userAccount, setUserAccount] = useState({ email: '', password: '' });
+  const [isValid, setIsValid] = useState({ email: false, password: false });
   const navigate = useNavigate();
 
-  const submitHandler = async () => {
-    if (!email | !password) {
-      alert(' 입력창을 다 채워주세요.');
+  const submitHandler = async e => {
+    e.preventDefault();
+    if (!userAccount.email | !userAccount.password) {
+      alert('다시 작성해주세요.');
       return null;
     }
     if (title === 'signin') {
       try {
-        await postSignIn(email, password);
+        await signInApi(userAccount);
+        alert('로그인 성공했습니다.');
+        // await postSignIn(userAccount.email, userAccount.password);
         navigate('/todo');
       } catch (error) {
         alert(error.data.message);
       }
     } else if (title === 'signup') {
       try {
-        await postSignUp(email, password);
+        await signUpApi(userAccount);
+        alert('가입이 완료되었습니다.');
+        // await postSignUp(userAccount.email, userAccount.password);
         navigate('/signin');
       } catch (error) {
         alert(error.data.message);
@@ -48,21 +51,32 @@ export default function AuthForm({ title }) {
       <InputContainer
         label="email"
         condition="@를 포함해 주세요."
-        state={emailState}
-        setState={setEmailState}
-        setInput={setEmail}
+        userAccount={userAccount}
+        setUserAccount={setUserAccount}
+        isValid={isValid}
+        setIsValid={setIsValid}
       />
       <InputContainer
         label="password"
         condition="8자리 이상으로 정해주세요."
-        state={passwordState}
-        setState={setPasswordState}
-        setInput={setPassword}
+        userAccount={userAccount}
+        setUserAccount={setUserAccount}
+        isValid={isValid}
+        setIsValid={setIsValid}
       />
       <ButtonsContainer>
-        <SubmitButton type="submit" onClick={submitHandler}>
+        {title === 'signup' && (
+          <Button type="button" onClick={() => navigate('/signin')}>
+            back
+          </Button>
+        )}
+        <Button
+          type="submit"
+          onClick={submitHandler}
+          disabled={isValid.email && isValid.password ? false : true}
+        >
           submit
-        </SubmitButton>
+        </Button>
       </ButtonsContainer>
     </Form>
   );

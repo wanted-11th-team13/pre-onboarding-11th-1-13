@@ -4,37 +4,44 @@ import React from 'react';
 export default function InputContainer({
   label,
   condition,
-  state,
-  setState,
-  setInput,
+  userAccount,
+  setUserAccount,
+  isValid,
+  setIsValid,
 }) {
-  const validateInput = e => {
-    setInput(e.target.value);
+  const validateInput = (label, event) => {
+    const input = event.target.value;
     if (label === 'email') {
       const pattern = /@/;
-      if (pattern.test(e.target.value)) {
-        setState(true);
+      if (pattern.test(input)) {
+        setIsValid({ email: true, password: isValid.password })
+        setUserAccount({ email: input, password: userAccount.password });
       } else {
-        setState(false);
+        setIsValid({ email: false, password: isValid.password });
       }
-    } else if (label === 'password') {
-      if (e.target.value.length > 7) {
-        setState(true);
+    }
+    if (label === 'password') {
+      if (input.length > 7) {
+        setIsValid({ email: isValid.email, password: true })
+        setUserAccount({ email: userAccount.email, password: input });
       } else {
-        setState(false);
+        setIsValid({ email: isValid.email, password: false });
       }
     }
   };
+
   return (
     <div>
       <label htmlFor={`${label}Input`}>{label}</label>
       <input
-        type="text"
+        type={label}
         id={`${label}Input`}
         data-testid={`${label}-input`}
-        onChange={validateInput}
+        onChange={event => {
+          validateInput(label, event);
+        }}
       />
-      <p>{!state ? condition : ''}</p>
+      <p>{!isValid[`${label}`] ? condition : ''}</p>
     </div>
   );
 }
