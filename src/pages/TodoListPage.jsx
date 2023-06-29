@@ -36,7 +36,7 @@ export default function TodoListPage() {
     <div>
       <div>
         <h1>TodoListPage</h1>
-        <TodoLists todos={todos} />
+        <TodoLists todos={todos} setTodos={setTodos} />
       </div>
       <div>
         <button onClick={handleLogout}>로그아웃</button>

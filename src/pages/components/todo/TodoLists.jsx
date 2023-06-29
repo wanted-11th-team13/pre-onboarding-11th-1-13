@@ -1,12 +1,21 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import TodoItem from './TodoItem';
 
-export default function TodoLists({ todos }) {
+export default function TodoLists({ todos, setTodos }) {
   return (
     <div>
       <ul>
         {todos.length > 0 ? (
-          todos.map(todo => <li key={todo.id}>{todo.todo}</li>)
+          todos.map(todo => (
+            <TodoItem
+              key={todo.id}
+              id={todo.id}
+              todo={todo.todo}
+              isCompleted={todo.isCompleted}
+              setTodos={setTodos}
+            />
+          ))
         ) : (
           <li>
             <div>
