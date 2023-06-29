@@ -1,5 +1,6 @@
-import React from 'react';
+import { signUpApi } from '@/api/authApi';
+import AuthForm from './components/AuthForm';
 
 export default function SignUpPage() {
-  return <div>SignUpPage</div>;
+  return <AuthForm title="signup" onSubmit={signUpApi} />;
 }
