@@ -1,9 +1,33 @@
+import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import useAuth from '../hooks/useAuth';
+import useAuth from '@/hooks/useAuth';
+import { getTodosApi } from '@/api/todoApi';
+import CreateTodo from './components/todo/CreateTodo';
+import TodoLists from './components/todo/TodoLists';
+import Button from './components/Button';
 
 export default function TodoListPage() {
   const navigate = useNavigate();
+
   const { logout } = useAuth();
+
+  const [todos, setTodos] = useState([]);
+
+  const getTodos = async () => {
+    try {
+      const response = await getTodosApi();
+      if (response.status !== 200) {
+        return;
+      }
+      setTodos(response.data);
+    } catch {
+      alert('오류가 발생했습니다.');
+    }
+  };
+
+  useEffect(() => {
+    getTodos();
+  }, []);
 
   const handleLogout = () => {
     // useAuth 커스텀 훅을 사용하여 로그인 기능 추가
@@ -12,9 +36,13 @@ export default function TodoListPage() {
   };
   return (
     <div>
-      <h1>TodoListPage</h1>
       <div>
-        <button onClick={handleLogout}>로그아웃</button>
+        <h1>TodoListPage</h1>
+        <CreateTodo setTodos={setTodos} />
+        <TodoLists todos={todos} setTodos={setTodos} />
+      </div>
+      <div>
+        <Button title="로그아웃" onClick={handleLogout} type="button" />
       </div>
     </div>
   );
