@@ -3,9 +3,12 @@ import useHandleUserInfo from '@/hooks/useHandleUserInfo';
 import { signUpApi, signInApi } from '@/api/authApi';
 import AuthButton from './AuthButton';
 import PropTypes from 'prop-types';
+import useAuth from '../../hooks/useAuth';
 
 export default function AuthForm({ title, onSubmit }) {
   const navigate = useNavigate();
+
+  const { login } = useAuth();
 
   const [userInfo, handleUserInfo] = useHandleUserInfo();
 
@@ -27,7 +30,8 @@ export default function AuthForm({ title, onSubmit }) {
 
       if (onSubmit === signInApi) {
         const access_token = response.data.access_token;
-        localStorage.setItem('access_token', access_token);
+        // 로그인
+        login(access_token);
         navigate('/todo');
       }
 
