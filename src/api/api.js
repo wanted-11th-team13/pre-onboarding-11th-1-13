@@ -17,13 +17,9 @@ const getAxiosInstance = () => {
   instance.interceptors.request.use(
     request => {
       const access_token = localStorage.getItem('access_token');
-<<<<<<< HEAD
-      if (access_token)
-=======
       // 요청을 보내기 전에 localStorage에서 'access_token'이 있다면
       if (access_token)
         // 요청 헤더에 'Authorization' 헤더로 추가
->>>>>>> ad79e5d90bbec032b3fa76afe65143d2e96a6372
         request.headers.Authorization = `Bearer ${access_token}`;
       return request;
     },
@@ -31,12 +27,6 @@ const getAxiosInstance = () => {
       return Promise.reject(error);
     }
   );
-<<<<<<< HEAD
-  return instance;
-};
-
-export const axiosInstance = getAxiosInstance();
-=======
 
   return instance;
 };
@@ -56,4 +46,3 @@ export const apiRequest = async (url, method, data) => {
     alert(error.response.data.message);
   }
 };
->>>>>>> ad79e5d90bbec032b3fa76afe65143d2e96a6372
