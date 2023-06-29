@@ -1,6 +1,6 @@
 import axios from 'axios';
 
 export const axiosInstance = axios.create({
-  baseURL: 'https://www.pre-onboarding-selection-task.shop',
+  baseURL: 'http://localhost:8000',
   headers: { 'Content-Type': 'application/json' },
 });
