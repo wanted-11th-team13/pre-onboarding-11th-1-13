@@ -92,14 +92,14 @@ TodoItem.displayName = 'TodoItem';
 
 //typeCheck
 TodoItem.propTypes = {
-  todo: PropTypes.string,
+  todo: PropTypes.object,
   onRemove: PropTypes.func,
   onToggle: PropTypes.func,
   isEditing: PropTypes.bool,
-  setEditing: PropTypes.bool,
+  setEditing: PropTypes.func,
   onCancelEdit: PropTypes.func,
   onSaveEdit: PropTypes.func,
   pickedIndex: PropTypes.number,
-  setPickedIndex: PropTypes.number,
+  setPickedIndex: PropTypes.func,
   index: PropTypes.number,
 };
