@@ -1,20 +1,19 @@
-import React, { useState } from 'react';
+import { useRef } from 'react';
 import PropTypes from 'prop-types';
 import { createTodoApi } from '@/api/todoApi';
 
 export default function CreateTodo({ setTodos }) {
-  const [newTodo, setNewTodo] = useState('');
-
-  // 투두 입력
-  const handleInputChange = e => {
-    setNewTodo(e.target.value);
-  };
+  // input onChange의 value 값을 구할 때,
+  // useState 대신 useRef를 이용하여 렌더링 방지
+  const inputRef = useRef(null);
 
   // 새로운 TODO를 입력하고 추가 버튼을 누르면 내용이 추가되도록 구현
   const handleSubmit = async e => {
     e.preventDefault();
+    // useRef를 사용하여 input 요소의 값을 가져옴
+    const newTodo = inputRef.current.value.trim();
 
-    if (newTodo.trim() === '') {
+    if (newTodo === '') {
       alert(`할일을 입력해주세요!`);
     } else {
       try {
@@ -30,18 +29,14 @@ export default function CreateTodo({ setTodos }) {
       } catch {
         alert(`오류가 발생했습니다.\n다시 시도해주세요.`);
       } finally {
-        setNewTodo('');
+        // 입력 초기화
+        inputRef.current.value = '';
       }
     }
   };
   return (
     <form onSubmit={handleSubmit}>
-      <input
-        data-testid="new-todo-input"
-        type="text"
-        value={newTodo}
-        onChange={handleInputChange}
-      />
+      <input data-testid="new-todo-input" type="text" ref={inputRef} />
       <button data-testid="new-todo-add-button" type="submit">
         추가
       </button>
