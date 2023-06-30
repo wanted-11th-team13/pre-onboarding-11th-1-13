@@ -18,9 +18,11 @@ const getAxiosInstance = () => {
     request => {
       const access_token = localStorage.getItem('access_token');
       // 요청을 보내기 전에 localStorage에서 'access_token'이 있다면
-      if (access_token)
+      if (access_token) {
         // 요청 헤더에 'Authorization' 헤더로 추가
         request.headers.Authorization = `Bearer ${access_token}`;
+      }
+
       return request;
     },
     error => {
@@ -44,5 +46,6 @@ export const apiRequest = async (url, method, data) => {
     return response;
   } catch (error) {
     alert(error.response.data.message);
+    return null;
   }
 };
