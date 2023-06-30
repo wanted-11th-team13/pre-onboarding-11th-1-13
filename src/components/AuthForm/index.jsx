@@ -5,6 +5,7 @@ import { useNavigate } from 'react-router-dom';
 import { signInApi, signUpApi } from '../../api/auth';
 import Button from '@/components/common/Button';
 import InputContainer from '../common/InputContainer';
+import { toast } from 'react-hot-toast';
 
 const ButtonsContainer = styled.div`
   display: flex;
@@ -22,26 +23,26 @@ export default function AuthForm({ title }) {
   const submitHandler = async e => {
     e.preventDefault();
     if (!userAccount.email | !userAccount.password) {
-      alert('다시 작성해주세요.');
+      toast('다시 작성해주세요.');
       return null;
     }
     if (title === 'signin') {
       try {
         await signInApi(userAccount);
-        alert('로그인 성공했습니다.');
+        toast('로그인 성공했습니다.');
         // await postSignIn(userAccount.email, userAccount.password);
         navigate('/todo');
       } catch (error) {
-        alert(error.data.message);
+        toast(error.data.message);
       }
     } else if (title === 'signup') {
       try {
         await signUpApi(userAccount);
-        alert('가입이 완료되었습니다.');
+        toast('가입이 완료되었습니다.');
         // await postSignUp(userAccount.email, userAccount.password);
         navigate('/signin');
       } catch (error) {
-        alert(error.data.message);
+        toast(error.data.message);
       }
     }
   };

@@ -1,10 +1,13 @@
-import React from 'react';
-import AuthForm from '../components/AuthForm';
-
+import { signUpApi } from '@/api/authApi';
+import AuthForm from './components/AuthForm';
+import Background from './components/Background';
+import Container from './components/Container';
 export default function SignUpPage() {
   return (
-    <div>
-      <AuthForm title="signup" />
-    </div>
+    <Background>
+      <Container>
+        <AuthForm title="signup" onSubmit={signUpApi} />
+      </Container>
+    </Background>
   );
 }

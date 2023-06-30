@@ -1,75 +1,63 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React from 'react';
+import AddTodoForm from '../components/AddTodoForm';
+import useSetTodosByResponse from '../hooks/useSetTodosByResponse';
+import Spinner from '../components/Spinner';
+import TodoList from '../components/TodoList';
+import Background from './components/Background';
+import { styled } from 'styled-components';
+import { Toaster, toast } from 'react-hot-toast';
+import logoutIcon from '@/assets/icons/logout.png';
 import { useNavigate } from 'react-router-dom';
-import Background from '@/components/common/Background';
-import Todo from '@/components/Todo';
-import Button from '@/components/common/Button';
+import useAuth from '../hooks/useAuth';
 
-import { getTodos, createTodo } from '@/api/todo';
+const Container = styled.div`
+  border-radius: 5px;
+  display: flex;
+  flex-direction: column;
+  background-color: pink;
+  padding: 10px;
+`;
 
-export default function TodolistsPage() {
-  const [todolists, setTodolists] = useState([]);
-  const newTodoInputRef = useRef();
+const Button = styled.button`
+  position: absolute;
+  bottom: 60px;
+  right: 120px;
+  border-radius: 10px;
+  background-color: white;
+  outline: none;
+  border: none;
+`;
+
+export default function TodoListPage() {
+  const [todos, isLoading, isError, setTodosByResponse] =
+    useSetTodosByResponse();
+
   const navigate = useNavigate();
+  const { logout } = useAuth();
 
-  const getTodolists = async () => {
-    const todolists = await getTodos();
-    setTodolists(todolists);
+  const handleLogout = () => {
+    logout();
+    toast('로그아웃되었습니다.');
+    navigate('/');
   };
 
-  const addTodoHandler = async e => {
-    e.preventDefault();
-    if (newTodoInputRef.current.value) {
-      const response = await createTodo(newTodoInputRef.current.value);
-      setTodolists([...todolists, response]);
-    } else {
-      alert('내용을 입력해주세요');
-    }
-  };
-
-  const logoutHandler = () => {
-    alert('로그아웃하시나요?');
-    localStorage.removeItem('access_token');
-    window.location.reload();
-  };
-
-  useEffect(() => {
-    localStorage.getItem('access_token') ? getTodolists() : navigate('/signin');
-  }, []); /* eslint-disable-line */
-
+  if (isError) return <p>인증이 만료되었습니다. 다시 로그인해주세요.</p>;
   return (
     <Background>
-      <div>
-        <div>
-          <h1>투두리스트</h1>
-          <div onClick={logoutHandler}>로그아웃</div>
-        </div>
-        <div onSubmit={addTodoHandler}>
-          <input
-            type="text"
-            className="todoInput"
-            ref={newTodoInputRef}
-            data-testid="new-todo-input"
-          />
-          <Button
-            type={'submit'}
-            className="todolistsInputBtn"
-            dataTestid="new-todo-add-button"
-          >
-            추가
-          </Button>
-        </div>
-        {todolists?.map(todo => (
-          <Todo
-            key={todo.id}
-            id={todo.id}
-            todo={todo.todo}
-            isCompleted={todo.isCompleted}
-            todolists={todolists}
-            setTodolists={setTodolists}
-            getTodolists={getTodolists}
-          />
-        ))}
-      </div>
+      <Button onClick={handleLogout}>
+        <img src={logoutIcon} alt="logout icon" />
+      </Button>
+      <Container>
+        <AddTodoForm refetch={setTodosByResponse} />
+        <section>
+          {isLoading ? (
+            <Spinner />
+          ) : (
+            <TodoList todos={todos} refetch={setTodosByResponse} />
+          )}
+        </section>
+      </Container>
+      <Toaster />
     </Background>
   );
 }
