@@ -1,12 +1,17 @@
-// ** React.memo **
-// 해당 프로퍼티가 변경된 경우에만 다시 랜더링된다.
-
 import React from 'react';
-import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
+const Containter = styled.div`
+  display: grid;
+  grid-template-columns: 4fr 1fr 1fr;
+  align-items: center;
+  gap: 10px;
+  p {
+    font-size: 18px;
+  }
+`;
+
 const Btn = styled.button`
-  margin-top: 50px;
   font-family: 'Humanbumsuk';
   display: flex;
   justify-content: center;
@@ -15,6 +20,7 @@ const Btn = styled.button`
   border: none;
   padding: 20px;
   height: 30px;
+  width: 70px;
   &:hover {
     cursor: pointer;
   }
@@ -35,17 +41,23 @@ const Btn = styled.button`
   }
 `;
 
-const AuthButton = ({ disabled, buttonText }) => {
+const Buttons = styled.div`
+  display: flex;
+`;
+
+// eslint-disable-next-line react/prop-types
+function NormalLi({ todo, handleEditMode, handleDelete }) {
   return (
-    <Btn disabled={disabled} data-testid={`${buttonText}-button`} type="submit">
-      {buttonText}
-    </Btn>
+    <Containter>
+      <p>{todo}</p>
+      <Btn onClick={handleEditMode} data-testid="modify-button">
+        수정
+      </Btn>
+      <Btn onClick={handleDelete} data-testid="delete-button">
+        삭제
+      </Btn>
+    </Containter>
   );
-};
+}
 
-export default React.memo(AuthButton);
-
-AuthButton.propTypes = {
-  disabled: PropTypes.bool,
-  buttonText: PropTypes.string,
-};
+export default NormalLi;

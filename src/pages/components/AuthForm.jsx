@@ -4,6 +4,69 @@ import { signUpApi, signInApi } from '@/api/authApi';
 import AuthButton from './AuthButton';
 import PropTypes from 'prop-types';
 import useAuth from '../../hooks/useAuth';
+import styled from 'styled-components';
+import { toast } from 'react-hot-toast';
+
+export const SignContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  box-sizing: border-box;
+  margin: auto;
+  padding: 20px 20px 10px 20px;
+  background-color: #fecbdd;
+  width: 480px;
+  height: 480px;
+  h1 {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    font-size: 30px;
+    padding: 30px 0 50px;
+  }
+  .itemWrapper {
+    padding-top: 10px;
+    display: flex;
+    flex-direction: column;
+    input {
+      outline: none;
+      border: none;
+      border-radius: 5px;
+      padding: 15px 70px 15px 25px;
+      font-size: 20px;
+    }
+  }
+`;
+export const EmailContainer = styled.div``;
+
+export const PasswordContainer = styled.div`
+  position: relative;
+  .passwordIcon {
+    position: absolute;
+    right: 10px;
+    top: 39.5px;
+    &:hover {
+      cursor: pointer;
+    }
+  }
+`;
+export const ButtonContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-end;
+  gap: 15px;
+`;
+export const Label = styled.label`
+  padding-bottom: 5px;
+  font-weight: 500;
+  font-size: 20px;
+`;
+export const Message = styled.p`
+  padding: 10px 0 0;
+  height: 17px;
+  color: red;
+`;
 
 export default function AuthForm({ title, onSubmit }) {
   const navigate = useNavigate();
@@ -19,12 +82,12 @@ export default function AuthForm({ title, onSubmit }) {
     try {
       const response = await onSubmit(userInfo);
       if (onSubmit === signUpApi && response.status !== 201) {
-        alert(`${title} 실패하였습니다.`);
+        toast(`${title} 실패하였습니다.`);
         return;
       }
 
       if (onSubmit === signInApi && response.status !== 200) {
-        alert(`${title} 실패하였습니다.`);
+        toast(`${title} 실패하였습니다.`);
         return;
       }
 
@@ -35,19 +98,19 @@ export default function AuthForm({ title, onSubmit }) {
         navigate('/todo');
       }
 
-      alert(`${title} 성공하였습니다.`);
+      toast(`${title} 성공하였습니다.`);
       navigate('/signin');
     } catch (error) {
-      alert(`오류가 발생했습니다.\n다시 시도해주세요.`);
+      toast(`오류가 발생했습니다.\n다시 시도해주세요.`);
     }
   };
 
   return (
-    <div>
+    <SignContainer>
       <form onSubmit={handleSubmit}>
         <h1>{title}</h1>
-        <div>
-          <label htmlFor="email">이메일 </label>
+        <EmailContainer className="itemWrapper">
+          <Label htmlFor="email">이메일 </Label>
           <input
             type="email"
             id="email"
@@ -57,9 +120,9 @@ export default function AuthForm({ title, onSubmit }) {
             data-testid="email-input"
             placeholder="이메일을 입력해주세요."
           />
-        </div>
-        <div>
-          <label htmlFor="password">비밀번호 </label>
+        </EmailContainer>
+        <PasswordContainer className="itemWrapper">
+          <Label htmlFor="password">비밀번호 </Label>
           <input
             type="password"
             id="password"
@@ -69,10 +132,12 @@ export default function AuthForm({ title, onSubmit }) {
             data-testid="password-input"
             placeholder="비밀번호를 입력해주세요."
           />
-        </div>
-        <AuthButton disabled={!isValid} buttonText={title} />
+        </PasswordContainer>
+        <ButtonContainer>
+          <AuthButton disabled={!isValid} buttonText={title} />
+        </ButtonContainer>
       </form>
-    </div>
+    </SignContainer>
   );
 }
 
