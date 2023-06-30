@@ -1,9 +1,5 @@
 import { apiRequest } from './api';
 
-export const signInApi = async userInfo => {
-  return await apiRequest('/auth/signin', 'post', userInfo);
-};
-
 export const addTodo = async todo => {
   return await apiRequest('/todos', 'post', { todo });
 };

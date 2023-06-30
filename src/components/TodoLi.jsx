@@ -1,5 +1,7 @@
 import { Toaster } from 'react-hot-toast';
 import useHandleTodo from '../hooks/useHandleTodo';
+import NormalLi from './NormalLi';
+import EditModeLi from './EditModeLi';
 
 function TodoLi(props) {
   const [
@@ -26,35 +28,19 @@ function TodoLi(props) {
           />
         </label>
         {!isEditMode && (
-          <>
-            <p>{todo}</p>
-            <div>
-              <button onClick={handleEditMode} data-testid="modify-button">
-                수정
-              </button>
-              <button onClick={handleDelete} data-testid="delete-button">
-                삭제
-              </button>
-            </div>
-          </>
+          <NormalLi
+            todo={todo}
+            handleEditMode={handleEditMode}
+            handleDelete={handleDelete}
+          />
         )}
         {isEditMode && (
-          <>
-            <input
-              value={todo}
-              autoFocus
-              onChange={handleEdit}
-              data-testid="modify-input"
-            />
-            <div>
-              <button onClick={handleSubmit} data-testid="submit-button">
-                제출
-              </button>
-              <button onClick={handleCancel} data-testid="cancel-button">
-                취소
-              </button>
-            </div>
-          </>
+          <EditModeLi
+            todo={todo}
+            handleEdit={handleEdit}
+            handleCancel={handleCancel}
+            handleSubmit={handleSubmit}
+          />
         )}
       </li>
       <Toaster />

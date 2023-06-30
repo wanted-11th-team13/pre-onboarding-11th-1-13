@@ -5,6 +5,7 @@ const useSetTodosByResponse = () => {
   const [todos, setTodos] = useState([]);
   const [isError, setIsError] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
+
   const setTodosByResponse = async () => {
     setIsLoading(true);
     const { data } = await getTodos();
@@ -18,7 +19,7 @@ const useSetTodosByResponse = () => {
   useEffect(() => {
     setTodosByResponse();
   }, []);
-  console.log(todos);
+
   return [todos, isLoading, isError, setTodosByResponse];
 };
 
