@@ -4,6 +4,11 @@ import React, { useState, useRef } from 'react';
 import Button from '@/components/common/Button';
 import { getTodos, updateTodo, deleteTodo } from '../../api/todo';
 
+const CheckboxContainer = styled.div`
+  display: flex;
+  align-items: center;
+  text-align: center;
+`;
 const ButtonsContainer = styled.div`
   display: flex;
 `;
@@ -27,6 +32,7 @@ export default function Todo({
   };
   const editButtonHandler = () => {
     setEditable(!editable);
+    setChecked(isCompleted);
   };
   const submitButtonHandler = async e => {
     e.preventDefault();
@@ -52,14 +58,15 @@ export default function Todo({
 
   return (
     <div>
-      <div>
+      <CheckboxContainer>
         <input
+          className="checkbox"
           type="checkbox"
           ref={checkboxRef}
           checked={checked ? true : false}
           onClick={checkboxHandler}
         />
-      </div>
+      </CheckboxContainer>
       {editable ? <input type="text" ref={todoInputRef} /> : <p>{todo}</p>}
       <ButtonsContainer>
         {editable ? (

@@ -1,4 +1,3 @@
-
 import React from 'react';
 import AddTodoForm from '../components/AddTodoForm';
 import useSetTodosByResponse from '../hooks/useSetTodosByResponse';
@@ -33,6 +32,5 @@ export default function TodoListPage() {
         </section>
       </Container>
     </Background>
-
   );
 }

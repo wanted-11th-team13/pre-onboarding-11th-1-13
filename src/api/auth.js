@@ -1,4 +1,3 @@
-
 import { apiRequest } from './api';
 
 export const signUpApi = async userInfo => {
@@ -7,4 +6,4 @@ export const signUpApi = async userInfo => {
 
 export const signInApi = async userInfo => {
   return await apiRequest('/auth/signin', 'post', userInfo);
-}
+};

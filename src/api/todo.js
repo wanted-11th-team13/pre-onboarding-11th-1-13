@@ -1,4 +1,3 @@
-
 import { apiRequest } from './api';
 
 export const addTodo = async todo => {
@@ -14,5 +13,4 @@ export const deleteTodo = async id => {
 
 export const getTodos = async () => {
   return await apiRequest('/todos', 'get');
-
 };
