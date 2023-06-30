@@ -1,12 +1,7 @@
-// ** React.memo **
-// 해당 프로퍼티가 변경된 경우에만 다시 랜더링된다.
-
 import React from 'react';
-import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
-const Btn = styled.button`
-  margin-top: 50px;
+export const Btn = styled.button`
   font-family: 'Humanbumsuk';
   display: flex;
   justify-content: center;
@@ -15,6 +10,7 @@ const Btn = styled.button`
   border: none;
   padding: 20px;
   height: 30px;
+  margin: 0 5px;
   &:hover {
     cursor: pointer;
   }
@@ -35,17 +31,21 @@ const Btn = styled.button`
   }
 `;
 
-const AuthButton = ({ disabled, buttonText }) => {
+export default function Button({
+  children,
+  onClick,
+  dataTestid,
+  className,
+  ...props
+}) {
   return (
-    <Btn disabled={disabled} data-testid={`${buttonText}-button`} type="submit">
-      {buttonText}
+    <Btn
+      onClick={onClick}
+      className={className}
+      data-testid={dataTestid}
+      {...props}
+    >
+      {children}
     </Btn>
   );
-};
-
-export default React.memo(AuthButton);
-
-AuthButton.propTypes = {
-  disabled: PropTypes.bool,
-  buttonText: PropTypes.string,
-};
+}
