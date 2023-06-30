@@ -67,7 +67,7 @@
     $ git clone https://github.com/wanted-11th-team13/pre-onboarding-11th-1-13.git
     $ cd pre-onboarding-11th-1-13
     $ npm install
-    $ npm start
+    $ npm run dev
 ```
 
 <br/>
