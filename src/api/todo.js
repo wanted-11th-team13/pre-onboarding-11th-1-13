@@ -16,6 +16,20 @@ export const getTodos = async () => {
     alert(error);
   }
 };
+export const createTodo = async todo => {
+  axiosInstance.defaults.headers = {
+    'Content-Type': 'application/json',
+    Authorization: `Bearer ${localStorage.getItem('access_token')}`,
+  };
+  try {
+    const response = await axiosInstance.post('/todos', {
+      todo: todo,
+    });
+    return response.data;
+  } catch (error) {
+    alert(error);
+  }
+};
 
 export const updateTodo = async (id, todo, isCompleted) => {
   axiosInstance.defaults.headers = {
