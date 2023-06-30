@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
-import { Toaster, toast } from 'react-hot-toast';
+import { toast } from 'react-hot-toast';
 import { signin, signup } from '../api/auth';
 
 function AccountForm() {
@@ -94,7 +94,6 @@ function AccountForm() {
           </button>
         </div>
       </form>
-      <Toaster />
     </>
   );
 }

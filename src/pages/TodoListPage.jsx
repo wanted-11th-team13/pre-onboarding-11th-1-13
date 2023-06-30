@@ -5,6 +5,7 @@ import Spinner from '../components/Spinner';
 import TodoList from '../components/TodoList';
 import Background from './components/Background';
 import { styled } from 'styled-components';
+import { Toaster } from 'react-hot-toast';
 
 const Container = styled.div`
   border-radius: 5px;
@@ -31,6 +32,7 @@ export default function TodoListPage() {
           )}
         </section>
       </Container>
+      <Toaster />
     </Background>
   );
 }

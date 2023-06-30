@@ -90,7 +90,6 @@ function AddTodoForm({ refetch }) {
         />
         <Button data-testid="new-todo-add-button">추가</Button>
       </InputContainer>
-      <Toaster />
     </>
   );
 }

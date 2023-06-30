@@ -72,7 +72,6 @@ function TodoLi(props) {
           )}
         </label>
       </Li>
-      <Toaster />
     </>
   );
 }

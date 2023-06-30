@@ -13,6 +13,8 @@ const useSetTodosByResponse = () => {
     setIsLoading(false);
     if (data?.statusCode === 401) {
       setIsError(true);
+    } else {
+      setIsError(false);
     }
   };
 
