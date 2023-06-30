@@ -13,16 +13,6 @@ const Li = styled.li`
     border-bottom: 2px solid #a9fac2;
     padding: 0 0 10px 0;
 
-    .todoWrapper {
-      display: grid;
-      grid-template-columns: 4fr 1fr 1fr;
-      align-items: center;
-      gap: 10px;
-      p {
-        font-size: 18px;
-      }
-    }
-
     [data-testid='modify-input'] {
       outline: none;
       border: none;
