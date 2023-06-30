@@ -477,7 +477,7 @@ export default useHandleTodo;
 
 <br/>
 
-### 7. .[Custom Hook] useSetTodosByResponse
+### 7. [Custom Hook] useSetTodosByResponse
 
 ```
 const useSetTodosByResponse = () => {
