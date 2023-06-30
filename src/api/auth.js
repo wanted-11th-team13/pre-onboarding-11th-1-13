@@ -1,9 +1,19 @@
-import { apiRequest } from './api';
+import { axiosInstance } from './api';
 
-export const signUpApi = async userInfo => {
-  return await apiRequest('/auth/signup', 'post', userInfo);
+export const signin = async account => {
+  try {
+    const response = await axiosInstance.post('/auth/signin', account);
+    return response;
+  } catch (error) {
+    return error.response;
+  }
 };
 
-export const signInApi = async userInfo => {
-  return await apiRequest('/auth/signin', 'post', userInfo);
+export const signup = async account => {
+  try {
+    const response = await axiosInstance.post('/auth/signup', account);
+    return response;
+  } catch (error) {
+    return error.response;
+  }
 };
