@@ -57,7 +57,6 @@
 ![react-hot-toast]()
 ![styledComponents](https://img.shields.io/badge/styled--components-6.0.0-DB7093?logo=styledcomponents)
 
-
 <br />
 
 ## 커밋 컨벤션
@@ -72,7 +71,6 @@
 `Merge`: merge를 위한 작업
 `Chore` : 빌드 작업, 패키지 관리자 구성 등 업데이트
 `Remove` : 파일의 삭제가 생긴 경우
-
 
 # 👀 과제 결과물 프리뷰(시연영상)
 
