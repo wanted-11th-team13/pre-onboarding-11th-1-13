@@ -3,6 +3,7 @@
 // 요청 헤더를 수정하거나 응답 데이터를 변활할 수 있다.
 
 import axios from 'axios';
+import { toast } from 'react-hot-toast';
 
 const getAxiosInstance = () => {
   const config = {
@@ -43,6 +44,6 @@ export const apiRequest = async (url, method, data) => {
     });
     return response;
   } catch (error) {
-    alert(error.response.data.message);
+    toast(error.response.data.message);
   }
 };

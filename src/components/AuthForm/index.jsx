@@ -23,7 +23,7 @@ export default function AuthForm({ title }) {
   const submitHandler = async e => {
     e.preventDefault();
     if (!userAccount.email | !userAccount.password) {
-      alert('다시 작성해주세요.');
+      toast('다시 작성해주세요.');
       return null;
     }
     if (title === 'signin') {

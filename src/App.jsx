@@ -4,6 +4,7 @@ import Container from './pages/components/Container';
 import Button from './components/Buttons/Button';
 import thumbnail from './assets/thumbnail.gif';
 import styled from 'styled-components';
+import { Toaster } from 'react-hot-toast';
 
 const Buttons = styled.div`
   display: flex;
@@ -35,6 +36,7 @@ export default function App() {
             <Button>회원가입 페이지로 이동</Button>
           </Link>
         </Buttons>
+        <Toaster />
       </Container>
     </Background>
   );
