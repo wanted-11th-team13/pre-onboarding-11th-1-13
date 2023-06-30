@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 
-const Containter = styled.div`
+const Container = styled.div`
   display: grid;
   grid-template-columns: 4fr 1fr 1fr;
   align-items: center;
@@ -41,14 +41,10 @@ const Btn = styled.button`
   }
 `;
 
-const Buttons = styled.div`
-  display: flex;
-`;
-
 // eslint-disable-next-line react/prop-types
 function NormalLi({ todo, handleEditMode, handleDelete }) {
   return (
-    <Containter>
+    <Container>
       <p>{todo}</p>
       <Btn onClick={handleEditMode} data-testid="modify-button">
         수정
@@ -56,7 +52,7 @@ function NormalLi({ todo, handleEditMode, handleDelete }) {
       <Btn onClick={handleDelete} data-testid="delete-button">
         삭제
       </Btn>
-    </Containter>
+    </Container>
   );
 }
 
