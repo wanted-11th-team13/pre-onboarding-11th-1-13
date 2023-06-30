@@ -14,7 +14,7 @@ export default function InputContainer({
     if (label === 'email') {
       const pattern = /@/;
       if (pattern.test(input)) {
-        setIsValid({ email: true, password: isValid.password })
+        setIsValid({ email: true, password: isValid.password });
         setUserAccount({ email: input, password: userAccount.password });
       } else {
         setIsValid({ email: false, password: isValid.password });
@@ -22,7 +22,7 @@ export default function InputContainer({
     }
     if (label === 'password') {
       if (input.length > 7) {
-        setIsValid({ email: isValid.email, password: true })
+        setIsValid({ email: isValid.email, password: true });
         setUserAccount({ email: userAccount.email, password: input });
       } else {
         setIsValid({ email: isValid.email, password: false });

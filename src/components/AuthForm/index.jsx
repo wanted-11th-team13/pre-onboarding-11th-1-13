@@ -3,7 +3,7 @@ import { styled } from 'styled-components';
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { signInApi, signUpApi } from '../../api/auth';
-import Button from '../common/Button';
+import Button from '@/components/common/Button';
 import InputContainer from '../common/InputContainer';
 
 const ButtonsContainer = styled.div`
