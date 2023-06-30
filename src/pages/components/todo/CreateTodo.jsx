@@ -1,7 +1,7 @@
 import { useRef } from 'react';
 import PropTypes from 'prop-types';
 import { createTodoApi } from '@/api/todoApi';
-import Button from '../Button';
+import Button from './Button';
 
 export default function CreateTodo({ setTodos }) {
   // input onChange의 value 값을 구할 때,
