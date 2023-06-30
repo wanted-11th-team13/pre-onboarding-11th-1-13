@@ -50,25 +50,29 @@
 
 <br />
 
+![javascript]()
 ![react](https://img.shields.io/badge/react-18.2.0-61DAFB?logo=react)
-![typescript](https://img.shields.io/badge/typescript-4.8.2-3178C6?logo=typescript)
+![react-router-dom]()
+![axios]()
+![react-hot-toast]()
 ![styledComponents](https://img.shields.io/badge/styled--components-6.0.0-DB7093?logo=styledcomponents)
 
-- 선정 이유
-
-  - React
-    - Virtual DOM을 활용하여 빠른 렌더링이 가능
-    - 단방향 데이터 바인딩을 통한 디버깅이 용이
-  - TypeScript
-    - 정적 타입 지원하므로 컴파일 단계에서 오류를 사전에 포착할 수 있으며 이를 통해 미리 디버깅이 가능함
-    - 여러가지 패러다임을 활용할 수 있음 (절차지향, 객체지향, 함수형)
-  - Styled-Components
-    - CSS-in-JS는 짧은 길이의 유니크한 클래스를 자동적으로 생성하기에 코드 경량화에 효과적
-    - 스크립트에성의 상수와 함수를 쉽게 공유하여 props를 활용한 조건부 렌더링에 용이
-    - 컴포넌트화 시켜 다른곳에서 사용 가능
-    - 컴포넌트 기반 개발 방법에 적합하고 가장 많이 사용되는 CSS-in-JS 라이브러리
 
 <br />
+
+## 커밋 컨벤션
+
+`Init` : 초기화
+`Feat` : 기능개발
+`Fix` : 버그 or 오류 발생
+`Docs` : 문서 작성 및 수정([README.md](http://readme.md/) 등)
+`Design` : HTML, CSS 등 사용자 UI 디자인 변경
+`Refactor` : 코드 리팩토링(서울로 가는데 택시탈지, 버스탈지 바꾸는거)
+`Style` : 컴포넌트 스타일 및 테마 변경 등의 수정 사항 (ex: 주석 변경, 코드 포맷 변경, 세미콜론 누락)
+`Merge`: merge를 위한 작업
+`Chore` : 빌드 작업, 패키지 관리자 구성 등 업데이트
+`Remove` : 파일의 삭제가 생긴 경우
+
 
 # 👀 과제 결과물 프리뷰(시연영상)
 
@@ -93,33 +97,44 @@
 # 📂 폴더 구조
 
 ```
-src
- ┣ api
- ┃ ┣ api.js
- ┃ ┣ authApi.js
- ┃ ┗ todoApi.js
- ┣ hooks
- ┃ ┣ useAuth.jsx
- ┃ ┗ useHandleUserInfo.jsx
- ┣ pages
- ┃ ┣ components
- ┃ ┃ ┣ auth
- ┃ ┃ ┃ ┗ AuthForm.jsx
- ┃ ┃ ┣ todo
- ┃ ┃ ┃ ┣ CreateTodo.jsx
- ┃ ┃ ┃ ┣ TodoItem.jsx
- ┃ ┃ ┃ ┗ TodoLists.jsx
- ┃ ┃ ┗ Button.jsx
- ┃ ┣ NotFoundPage.jsx
- ┃ ┣ SignInPage.jsx
- ┃ ┣ SignUpPage.jsx
- ┃ ┗ TodoListPage.jsx
- ┣ routes
- ┃ ┣ Root.jsx
- ┃ ┗ router.jsx
- ┣ App.jsx
- ┣ GlobalStyle.js
- ┗ main.jsx
+├── package-lock.json
+├── package.json
+├── public
+│   └── assets
+├── src
+│   ├── App.jsx
+│   ├── GlobalStyle.js
+│   ├── api
+│   │   ├── api.js
+│   │   ├── auth.js
+│   │   ├── authApi.js
+│   │   └── todo.js
+│   ├── components
+│   │   ├── AccountForm.jsx
+│   │   ├── AddTodoForm.jsx
+│   │   ├── EditModeLi.jsx
+│   │   ├── NormalLi.jsx
+│   │   ├── Spinner.jsx
+│   │   ├── TodoLi.jsx
+│   │   └── TodoList.jsx
+│   ├── hooks
+│   │   ├── useAuth.jsx
+│   │   ├── useHandleTodo.js
+│   │   ├── useHandleUserInfo.jsx
+│   │   └── useSetTodosByResponse.js
+│   ├── main.jsx
+│   ├── pages
+│   │   ├── NotFoundPage.jsx
+│   │   ├── SignInPage.jsx
+│   │   ├── SignUpPage.jsx
+│   │   ├── TodoListPage.jsx
+│   │   └── components
+│   │       ├── AuthButton.jsx
+│   │       └── AuthForm.jsx
+│   └── routes
+│       ├── Root.jsx
+│       └── router.jsx
+└── vite.config.js
 ```
 
 <br/>
