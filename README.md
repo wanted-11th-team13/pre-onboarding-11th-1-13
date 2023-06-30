@@ -11,15 +11,13 @@
 <br/>
 [4. 프로젝트 실행 방법](#실행-방법)
 <br/>
-[5. 프리뷰(시연 영상)](#과제-결과물-프리뷰시연영상)
+[5. 기술 스택](#기술스택)
 <br/>
-[6. 기술 스택](#기술스택)
+[6. 커밋 컨벤션](#커밋-컨벤션)
 <br/>
-[7. 커밋 컨벤션](#커밋-컨벤션)
+[7. 개인 구현 로직](#개인-구현-로직)
 <br/>
-[8. 개인 구현 로직](#개인-구현-로직)
-<br/>
-[9. 기능별 Best Practice](#기능별-best-practice-선정과-이유)
+[8. 기능별 Best Practice](#기능별-best-practice-선정과-이유)
 <br/>
 
 > [1. 라우팅 설정](#1-라우팅-설정) <br/> [2. axios를 이용한 api 관련 함수](#2-axios를-이용한-api-관련-함수) <br/> [3. token 설정과 리다이렉트](#3-token-설정과-리다이렉트) <br/> [4. authForm으로 컴포넌트 재사용](#4-authform으로-컴포넌트-재사용) <br/> [5. [Custom Hook] useHandleUserInfo](#5-custom-hook-usehandleuserinfo) <br/> [6. [Custom Hook] useHandleTodo](#6-custom-hook-usehandletodo) <br/> [7. [Custom Hook] useSetTodoByResponse](#7-custom-hook-usesettodosbyresponse)
@@ -114,10 +112,6 @@
 > 각자 작업한 코드 PR을 올려서 팀원들이 보면서 자유롭게 의견을 남길 수 있도록 하였습니다.
 
 <br />
-
-## 과제 결과물 프리뷰(시연영상)
-
-<br/>
 
 # 기능별 Best Practice 선정과 이유
 
