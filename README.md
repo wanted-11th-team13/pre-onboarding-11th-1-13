@@ -1,5 +1,10 @@
 ![header](https://capsule-render.vercel.app/api?type=waving&color=gradient&height=200&section=header&text=원티드%20프리온보딩%2011차%201주차%20과제&fontSize=45)
 
+![1주차 과제 시연영상](./1%EC%A3%BC%EC%B0%A8-%EA%B3%BC%EC%A0%9C-%EC%8B%9C%EC%97%B0%EC%98%81%EC%83%81.gif)
+
+- TestID : wanted-11th-13@admin.com
+- TestPW : testf1234
+
 <br/>
 
 # 목차
@@ -520,44 +525,48 @@ export default useSetTodosByResponse;
 ## 📂 폴더 구조
 
 ```
-├── package-lock.json
-├── package.json
-├── public
-│   └── assets
-├── src
-│   ├── App.jsx
-│   ├── GlobalStyle.js
-│   ├── api // 통신
-│   │   ├── api.js
-│   │   ├── auth.js
-│   │   ├── authApi.js
-│   │   └── todo.js
-│   ├── components // 컴포넌트
-│   │   ├── AccountForm.jsx
-│   │   ├── AddTodoForm.jsx
-│   │   ├── EditModeLi.jsx
-│   │   ├── NormalLi.jsx
-│   │   ├── Spinner.jsx
-│   │   ├── TodoLi.jsx
-│   │   └── TodoList.jsx
-│   ├── hooks // 생명 주기와 관련된 함수
-│   │   ├── useAuth.jsx
-│   │   ├── useHandleTodo.js
-│   │   ├── useHandleUserInfo.jsx
-│   │   └── useSetTodosByResponse.js
-│   ├── main.jsx
-│   ├── pages // 화면 페이지
-│   │   ├── NotFoundPage.jsx
-│   │   ├── SignInPage.jsx
-│   │   ├── SignUpPage.jsx
-│   │   ├── TodoListPage.jsx
-│   │   └── components
-│   │       ├── AuthButton.jsx
-│   │       └── AuthForm.jsx
-│   └── routes // 라우팅 경로
-│       ├── Root.jsx
-│       └── router.jsx
-└── vite.config.js
+src
+ ┣ api // axios 통신
+ ┃ ┣ api.js
+ ┃ ┣ authApi.js
+ ┃ ┗ todoApi.js
+ ┣ assets // css design
+ ┃ ┣ fonts
+ ┃ ┃ ┣ Humanbumsuk.otf
+ ┃ ┃ ┣ Humanbumsuk.ttf
+ ┃ ┃ ┗ fonts.css
+ ┃ ┣ logout.png
+ ┃ ┗ thumbnail.gif
+ ┣ hooks // 생명주기와 관련된 함수(터스텀훅)
+ ┃ ┣ useAuth.js
+ ┃ ┣ useHandleTodo.js
+ ┃ ┣ useHandleUserInfo.js
+ ┃ ┗ useSetTodosByResponse.js
+ ┣ pages // 화면 UI
+ ┃ ┣ components // 공통 컴포넌트
+ ┃ ┃ ┣ auth // 회원가입, 로그인 공통 입력폼
+ ┃ ┃ ┃ ┗ AuthForm.jsx
+ ┃ ┃ ┣ todo // 투두리스트 컴포넌트
+ ┃ ┃ ┃ ┣ AddTodoForm.jsx
+ ┃ ┃ ┃ ┣ EditModeLi.jsx
+ ┃ ┃ ┃ ┣ NormalLi.jsx
+ ┃ ┃ ┃ ┣ TodoLi.jsx
+ ┃ ┃ ┃ ┗ TodoList.jsx
+ ┃ ┃ ┣ AuthButton.jsx
+ ┃ ┃ ┣ Background.jsx
+ ┃ ┃ ┣ Button.jsx
+ ┃ ┃ ┣ Container.jsx
+ ┃ ┃ ┗ Spinner.jsx  // 로딩중일 때
+ ┃ ┣ NotFoundPage.jsx // 에러 페이지
+ ┃ ┣ SignInPage.jsx  // 1. 로그인 페이지
+ ┃ ┣ SignUpPage.jsx  // 2. 회원가입 페이지
+ ┃ ┗ TodoListPage.jsx // 3. 투두리스트 페이지
+ ┣ routes // 라우팅 경로
+ ┃ ┣ Root.jsx
+ ┃ ┗ router.jsx
+ ┣ App.jsx
+ ┣ GlobalStyle.js // 스타일드 컴포넌트
+ ┗ main.jsx
 ```
 
 <br/>

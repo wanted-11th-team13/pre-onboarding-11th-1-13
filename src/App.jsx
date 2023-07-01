@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom';
 import Background from './pages/components/Background';
 import Container from './pages/components/Container';
-import Button from './components/Buttons/Button';
+import Button from './pages/components/Button';
 import thumbnail from './assets/thumbnail.gif';
 import styled from 'styled-components';
 import { Toaster } from 'react-hot-toast';

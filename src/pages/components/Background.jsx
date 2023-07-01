@@ -1,4 +1,4 @@
-import React from 'react';
+import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
 export const Container = styled.div`
@@ -12,3 +12,7 @@ export const Container = styled.div`
 export default function Background({ children }) {
   return <Container>{children}</Container>;
 }
+
+Background.propTypes = {
+  children: PropTypes.node.isRequired,
+};

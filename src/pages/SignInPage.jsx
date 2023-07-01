@@ -1,5 +1,5 @@
 import { signInApi } from '@/api/authApi';
-import AuthForm from './components/AuthForm';
+import AuthForm from './components/auth/AuthForm';
 import Background from './components/Background';
 import Container from './components/Container';
 

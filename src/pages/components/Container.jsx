@@ -1,4 +1,4 @@
-import React from 'react';
+import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
 export const Div = styled.div`
@@ -11,3 +11,7 @@ export const Div = styled.div`
 export default function Container({ children }) {
   return <Div>{children}</Div>;
 }
+
+Container.propTypes = {
+  children: PropTypes.node.isRequired,
+};

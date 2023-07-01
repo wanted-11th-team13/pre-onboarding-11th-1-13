@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
-import { getTodos } from '../api/todo';
+import { getTodos } from '../api/todoApi';
 
-const useSetTodosByResponse = () => {
+export default function useSetTodosByResponse() {
   const [todos, setTodos] = useState([]);
   const [isError, setIsError] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
@@ -23,6 +23,4 @@ const useSetTodosByResponse = () => {
   }, []);
 
   return [todos, isLoading, isError, setTodosByResponse];
-};
-
-export default useSetTodosByResponse;
+}
